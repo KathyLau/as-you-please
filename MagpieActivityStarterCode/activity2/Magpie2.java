@@ -1,10 +1,10 @@
 /**
  * A program to carry on conversations with a human user.
- * This is the initial version that:  
+ * This is the initial version that:
  * <ul><li>
  *       Uses indexOf to find strings
  * </li><li>
- * 		    Handles responding to simple words and phrases 
+ * 		    Handles responding to simple words and phrases
  * </li></ul>
  * This version uses a nested if to handle default responses.
  * @author Laurie White
@@ -13,17 +13,17 @@
 public class Magpie2
 {
 	/**
-	 * Get a default greeting 	
+	 * Get a default greeting
 	 * @return a greeting
 	 */
 	public String getGreeting()
 	{
 		return "Hello, let's talk.";
 	}
-	
+
 	/**
 	 * Gives a response to a user statement
-	 * 
+	 *
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
@@ -42,6 +42,24 @@ public class Magpie2
 		{
 			response = "Tell me more about your family.";
 		}
+		else if (statement.indexOf("dog") >= 0
+				|| statement.indexOf("cat") >= 0)
+				{
+					response = "Tell me about your pets.";
+				}
+		else if (statement.indexOf("Mr. Brown") >= 0){
+				response = "I heard he's the best teacher in Stuy.";
+		}
+		else if (statement.indexOf("Mr. Sandler") >= 0
+				|| statement.indexOf("Ms. Wong") >= 0
+				|| statement.indexOf("Ms. Dunitz") >= 0
+				|| statement.indexOf("Ms. Bernstein") >= 0
+				|| statement.indexOf("Mr. Thomas") >= 0){
+		response = "Sounds like a good teacher.";
+}
+		else if (statement.trim().length() == 0){
+			response = "Say something, please";
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -55,11 +73,11 @@ public class Magpie2
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
-		
+
 		if (whichResponse == 0)
 		{
 			response = "Interesting, tell me more.";
@@ -76,7 +94,14 @@ public class Magpie2
 		{
 			response = "You don't say.";
 		}
-
+		else if (whichResponse == 4)
+		{
+			response = "LOL";
+		}
+		else if (whichResponse == 5)
+		{
+			response = "IDK";
+		}
 		return response;
 	}
 }

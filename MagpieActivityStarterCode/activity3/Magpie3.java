@@ -1,10 +1,10 @@
 /**
  * A program to carry on conversations with a human user.
- * This version: 
+ * This version:
  * <ul><li>
- *    Uses advanced search for keywords 
- * </li></ul> 
- *    
+ *    Uses advanced search for keywords
+ * </li></ul>
+ *
  * @author Laurie White
  * @version April 2012
  */
@@ -12,7 +12,7 @@ public class Magpie3
 {
 	/**
 	 * Get a default greeting
-	 * 
+	 *
 	 * @return a greeting
 	 */
 	public String getGreeting()
@@ -22,7 +22,7 @@ public class Magpie3
 
 	/**
 	 * Gives a response to a user statement
-	 * 
+	 *
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
@@ -38,12 +38,39 @@ public class Magpie3
 		{
 			response = "Why so negative?";
 		}
+		else if (findKeyword(statement, "Sachal") >= 0
+				|| findKeyword(statement,"Kathy") >= 0)
+				{
+					response = "You just mentioned the coolest person I know.";
+				}
+		else if (findKeyword(statement,"Harvard") >= 0)
+		{
+			response = "You're not going to get in";
+		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0)
 		{
 			response = "Tell me more about your family.";
+		}
+		else if (findKeyword(statement,"dog") >= 0
+				|| findKeyword(statement,"cat") >= 0)
+				{
+					response = "Tell me about your pets.";
+				}
+		else if (findKeyword(statement,"Mr. Brown") >= 0){
+				response = "I heard he's the best teacher in Stuy.";
+		}
+		else if (findKeyword(statement,"Mr. Sandler") >= 0
+				|| findKeyword(statement,"Ms. Wong") >= 0
+				|| findKeyword(statement,"Ms. Dunitz") >= 0
+				|| findKeyword(statement,"Ms. Bernstein") >= 0
+				|| findKeyword(statement,"Mr. Thomas") >= 0){
+		response = "Sounds like a good teacher.";
+}
+		else if (statement.trim().length() == 0){
+			response = "Say something, please";
 		}
 		else
 		{
@@ -122,7 +149,7 @@ public class Magpie3
 	 * is not a substring of a longer string (so, for
 	 * example, "I know" does not contain "no"). The search
 	 * begins at the beginning of the string.
-	 * 
+	 *
 	 * @param statement
 	 *            the string to search
 	 * @param goal
@@ -137,12 +164,12 @@ public class Magpie3
 
 	/**
 	 * Pick a default response to use if nothing else fits.
-	 * 
+	 *
 	 * @return a non-committal string
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -162,6 +189,14 @@ public class Magpie3
 		else if (whichResponse == 3)
 		{
 			response = "You don't say.";
+		}
+		else if (whichResponse == 4)
+		{
+			response = "LOL";
+		}
+		else if (whichResponse == 5)
+		{
+			response = "IDK";
 		}
 
 		return response;

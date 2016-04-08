@@ -35,6 +35,15 @@ public class Magpie2
 		{
 			response = "Why so negative?";
 		}
+		else if (statement.indexOf("Sachal") >= 0
+				|| statement.indexOf("Kathy") >= 0)
+				{
+					response = "You just mentioned the coolest person I know.";
+				}
+		else if (statement.indexOf("Harvard") >= 0)
+		{
+			response = "You're not going to get in";
+		}
 		else if (statement.indexOf("mother") >= 0
 				|| statement.indexOf("father") >= 0
 				|| statement.indexOf("sister") >= 0

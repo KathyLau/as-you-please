@@ -69,9 +69,6 @@ public class Magpie3
 				|| findKeyword(statement,"Mr. Thomas") >= 0){
 		response = "Sounds like a good teacher.";
 }
-		else if (statement.trim().length() == 0){
-			response = "Say something, please";
-		}
 		else
 		{
 			response = getRandomResponse();
